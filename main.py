@@ -68,11 +68,16 @@ class CSVSplitterApp:
         if self.file_path:
             self.file_label.config(text=f"Selected file: {os.path.basename(self.file_path)}")
             self.input_rec.config(text=f"Number of records: {len(pd.read_csv(self.file_path))}")
+        else:
+            self.file_label.config(text=f"No file selected")
+            self.input_rec.config(text=f"")
 
     def select_folder(self):
         self.output_dir = filedialog.askdirectory()
         if self.output_dir:
             self.folder_label.config(text=f"Selected folder: {self.output_dir}")
+        else:
+            self.folder_label.config(text=f"No folder selected")
 
     def split_file(self):
         if not self.file_path:
@@ -92,6 +97,9 @@ class CSVSplitterApp:
         try:
             self.modify_and_split_file(self.file_path, records_per_file, self.output_dir)
             messagebox.showinfo("Success", "CSV file split successfully!")
+            self.output_dir=self.output_dir
+            self.file_label.config(text=f"No file selected")
+            self.input_rec.config(text=f"")
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
 
