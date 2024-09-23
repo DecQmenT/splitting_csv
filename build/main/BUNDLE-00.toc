@@ -1,3 +1,0 @@
-([('main',
-   '/Users/decqment/Documents/coding/splitting_csv_file/dist/main',
-   'EXECUTABLE')],)
