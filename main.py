@@ -98,6 +98,7 @@ class CSVSplitterApp:
             self.modify_and_split_file(self.file_path, records_per_file, self.output_dir)
             messagebox.showinfo("Success", "CSV file split successfully!")
             self.output_dir=self.output_dir
+            self.file_path=None
             self.file_label.config(text=f"No file selected")
             self.input_rec.config(text=f"")
         except Exception as e:
